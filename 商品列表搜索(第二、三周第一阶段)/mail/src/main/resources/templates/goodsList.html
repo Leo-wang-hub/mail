@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <!--ali图库-->
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <!--载入bootstrap中的css文件-->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <style>
+        body{
+            background-color: #999;
+
+            }
+        .container{
+            background-color: white;
+
+        }
+        .row div{
+            text-align: center;
+
+        }
+        .row div a{
+            text-decoration: none;
+        }
+        .price{
+            color:red;
+        }
+        .car a{
+            color:red;
+        }
+        .car{
+
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--使用面板构建商品列表-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list"></span>商品列表/<span style="color:red" th:text="${type}"></span>
+        </div>
+        <div class="panel-body">
+            <!--缩略图-->
+
+                <div class="row">
+                    <div th:each="product:${products}" class="col-sm-6 col-md-3">
+                        <a href="#" class="thumbnail" >
+                            <img th:src="@{${product.getProductImage()}}"
+                                 alt="通用的占位符缩略图">
+                            <h5 th:text="${product.getProductName()}"></h5>
+                            <span class="price">￥</span><span class="price" th:text="${product.getProductPrice()}">￥8999</span>
+                        </a>
+                        <div class="car">
+                            <a href="#"><i class="icon iconfont icon-gouwuchekong"></i></a>加入购物车
+                        </div>
+                    </div>
+
+
+
+                </div>
+        </div>
+        <div style="text-align:center;">
+            <ul class="pagination">
+                <li><a href="#">&laquo</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">&raquo</a></li>
+            </ul>
+
+        </div>
+
+    </div>
+    </div>
+</div>
+
+
+
+
+<!--引入jquery-->
+<script type="text/javascript" src="/static/js/jquery-3.5.1.js"></script>
+<!--引入bootstrap中的js-->
+<script  type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js" ></script>
+</body>
+</html>

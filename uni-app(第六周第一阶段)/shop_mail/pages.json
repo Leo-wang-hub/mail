@@ -1,0 +1,50 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/user/login"
+		},
+		{
+			"path": "pages/index/index"
+			
+		},
+		{
+			"path": "pages/car/car"
+			
+		}
+	    ,{
+            "path" : "pages/prodcutDetail/prodcutDetail",
+            "style" :                                                                                    
+            {
+               
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        
+        
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "购物商城",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {},
+	"tabBar": {
+		"selectedColor": "black",
+		"list": [
+			{
+				"text": "商品首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "./static/icon/首页.png",
+				"selectedIconPath": "./static/icon/首页 (1).png"
+			},
+			{
+				"text": "购物车",
+				"pagePath": "pages/car/car",
+				"iconPath": "./static/icon/购物车.png",
+				"selectedIconPath": "./static/icon/购物车 (1).png"
+			}
+		]
+	}
+}

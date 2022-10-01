@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--也可以添加缓存-->
+<mapper namespace="com.woomq.mapper.AddressMapper">
+    <insert id="addAddress" parameterType="Address">
+        INSERT INTO mail.address(address_user, address_phone, address_detail, address_person) values(#{addressUser},#{addressPhone},#{addressDetail},#{addressPerson})
+    </insert>
+    <select id="getAllAddress" resultType="Address">
+        SELECT * FROM mail.address
+    </select>
+    <delete id="deleteAddressById" parameterType="int">
+        DELETE FROM mail.address WHERE address_id=#{addressId}
+    </delete>
+    <select id="getAddressById" resultType="Address">
+        SELECT * FROM mail.address WHERE address_id=#{addressId}
+    </select>
+</mapper>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>登录</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+
+		<link rel="stylesheet" th:href="@{/css/login.css}">
+
+
+	</head>
+
+	<body class="text-center">
+		<form class="form-signin" th:action="@{/user/login}">
+			<img class="mb-4" th:src="@{/img/index/logo.png}" alt="" width="200" height="150">
+
+			<!--如何message的消息不为空则执行这个消息-->
+            <p style="color: red;" th:text="${msg}" id="msg"></p>
+			<label class="sr-only">账号</label>
+			<input id="username" type="text" class="form-control"name="username" placeholder="账号" required="" autofocus="" onblur="getUser()">
+			<label class="sr-only">密码</label>
+			<input type="password" class="form-control" name="password" placeholder="密码" required="">
+			<div class="checkbox mb-3">
+				<label>
+          <!--<input type="checkbox" value="remember-me"> Remember me-->
+        </label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit" id="loginButton">登录</button>
+			<a class="btn btn-lg btn-primary btn-block" th:href="@{/user/toRegister/}">注册</a>
+			<p class="mt-5 mb-3 text-muted">© 2022</p>
+
+		</form>
+		<script type="text/javascript" th:src="@{/js/jquery-3.5.1.js}"></script>
+		<!--引入bootstrap中的js-->
+		<script  type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+		<script>
+            function getUser() {
+                $.ajax({
+                    url:"/user/getUserByUsername",
+                    data:{"username":$("#username").val()},
+                    success:function (data) {
+                        //用户已存在
+                        if(data==1){
+                            //允许提交
+                            $("#loginButton").removeAttr("disabled","true");
+                        }
+                        else{
+                            //用户不存在
+                            $("#msg").html("用户名不存在").css("color","red");
+                            //禁用提交
+                            $("#loginButton").attr("disabled","true");
+                        }
+
+
+                    }
+                })
+            }
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <!--ali图库-->
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <!--载入bootstrap中的css文件-->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <style>
+        body{
+            background-color: #999;
+
+            }
+        .container{
+            background-color: white;
+
+        }
+        .row div{
+            text-align: center;
+
+        }
+        .row div a{
+            text-decoration: none;
+        }
+        .price{
+            color:red;
+        }
+        .car a{
+            color:red;
+        }
+        .car{
+
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--使用面板构建商品列表-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span >订单预览</span>
+        </div>
+            <!--商品信息-->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th-list"></span>商品信息
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+
+                            <th>商品名称</th>
+                            <th>价格</th>
+                            <th>数量</th>
+                            <th>小计</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="car:${cars}">
+                            <td th:text="${car.getProductName()}">手机</td>
+                            <td th:text="${car.getProductPrice()}">1999</td>
+                            <td th:text="${car.getProductNum()}"></td>
+                            <td th:text="${car.getProductCount()}"></td>
+                        </tr>
+                        <div class="row">
+                            <div class="pull-right" style="margin-right: 40px;">
+
+                                <div>
+                                    总价：<p th:text="${total}" class="btn  btn-default btn-lg">总计</p>
+                                </div>
+                            </div>
+                        </div>
+                        </tbody>
+                    </table>
+                    <hr>
+
+                </div>
+
+            </div>
+            <!--收货信息-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-th-list"></span>收货信息
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+
+                        <th>收货人姓名</th>
+                        <th>收货人电话</th>
+                        <th>详细地址</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr >
+                        <td th:text="${address.getAddressPerson()}">01</td>
+                        <td th:text="${address.getAddressDetail()}">手机</td>
+                        <td th:text="${address.getAddressDetail()}">1999</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="pull-right" style="margin-right: 40px;">
+
+                <div>
+
+                    <a th:href="@{/order/createOrder(userId=${session.user.getId()},addressId=${address.getAddressId()})}" class="btn  btn-default btn-lg">生成订单</a>
+
+                </div>
+                <br><br>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script type="text/javascript" th:src="@{/js/jquery-3.5.1.js}"></script>
+<!--引入bootstrap中的js-->
+<script  type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+<script>
+    //增加商品数量
+    function add(cid,cnum,cprice) {
+        cnum++;
+        location.href="/car/updateCar?carId="+cid+"&productNum="+cnum+"&productPrice="+cprice;
+    }
+    //减少商品数量
+    function sub(cid,cnum,cprice) {
+        if(cnum>1){
+            cnum--;
+
+        }
+        else{
+            cnum--;
+            //只有一个商品
+            confirm("这是最后一个~");
+        }
+        location.href="/car/updateCar?carId="+cid+"&productNum="+cnum+"&productPrice="+cprice;
+    }
+
+</script>
+
+</body>
+</html>

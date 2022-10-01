@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--样式初始化-->
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <!-- ali矢量图库 -->
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <!-- jq -->
+    <script  th:src="@{/js/jquery-3.5.1.js}"></script>
+    <script th:src="@{/js/lunbo.js}"></script>
+</head>
+<body>
+    
+    <!-- header  -->
+    <div class="header">
+        <!-- 顶部导航栏 -->
+        <div class="top">
+            <!-- 居中部分 -->
+            <div class="inner">
+                <!-- （左）坐标 -->
+                <div class="left">
+                    <i class="icon iconfont icon-zuobiao"></i>
+                    <span>河南</span>
+                </div>
+                <!-- （右）top导航 -->
+                <div class="right">
+                    <ul>
+                        <li class="text"><a href="#">网站无障碍</a></li>
+                        <li class="border">|</li>
+                        <li class="text"><a href="#">手机京东</a></li>
+                        <li class="border">|</li>
+                        <li class="text wrap"><a href="#">网页导航</a></li>
+                        <li class="border">|</li>
+                        <li class="text wrap kefu"><a href="#">客服服务</a>
+                            <div class="drop-down">
+                                <div class="list1">
+                                    <ul>
+                                        <div  style="width: 200px ;color:black">客户</a></div>
+                                        <li><a href="#">帮助中心</a></li>
+                                        <li><a href="#">售后服务</a></li>
+                                        <li><a href="#">在线客服</a></li>
+                                        <li><a href="#">意见建议</a></li>
+                                        <li><a href="#">电话服务</a></li>
+                                        <li><a href="#">客服邮箱</a></li>
+                                        <li><a href="#">金融咨询</a></li>
+                                        <li><a href="#">全球售客服</a></li>
+                                        
+    
+                                    </ul>
+                                </div>
+                                <div class="list2">
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="border">|</li>
+                        <li class="text wrap buy"><a href="#" style="color:red">企业采购</a>
+                            <div class="drop-down">
+                                <div class="list1">
+                                    <ul>
+                                        <li><a href="#">企业采购</a></li>
+                                        <li><a href="#">公共频道</a></li>
+                                        <li><a href="#">工业品</a></li>
+                                        <li><a href="#">商用场景馆</a></li>
+                                        <li><a href="#">礼品卡</a></li>
+                                        <li><a href="#">微信企业购</a></li>
+                                        <li><a href="#">工品优选</a></li>
+                                        <li><a href="#">京东锦礼</a></li>
+                                        <li><a href="#">大中型客户采购</a></li>
+    
+                                    </ul>
+                                </div>
+                               
+                            </div>
+                        </li>
+                        <li class="border">|</li>
+                        <li class="text"><a href="#">京东会员</a></li>
+                        <li class="border">|</li>
+                        <li class="text wrap jd"><a href="#">我的京东</a>
+                            <div class="drop-down">
+                                <div class="list1">
+                                    <ul>
+                                        <li><a href="#">待处理订单</a></li>
+                                        <li><a href="#">我的问答</a></li>
+                                        <li><a href="#">返修退换货</a></li>
+                                        <li><a href="#">我的关注</a></li>
+                                        <li><a href="#">降价商品</a></li>
+                                    </ul>
+                                </div>
+                                <div class="list2">
+                                    <ul>
+                                        <li><a href="#">我的京豆</a></li>
+                                        <li><a href="#">我的优惠券</a></li>
+                                        <li><a href="#">我的白条</a></li>
+                                        <li><a href="#">我的理财</a></li>
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                       
+                        <li class="border">|</li>
+                        <li class="text"><a href="#">我的订单</a></li>
+                        <li class="border">|</li>
+                        <li class="text"><a href="#">你好，请登录<span style="color:red">免费注册</span></a></li>
+                    
+                    </ul>
+
+                </div>
+                
+            </div>
+
+        </div>
+        <!-- logo搜索栏 -->
+        <div class="middle">
+            <div class="inner">
+                <!-- left  logo -->
+                <div class="left">
+                    <h1><a href="#">京东</a></h1>
+
+                </div>
+                <!-- center search -->
+                <div class="center">
+                    <div class="top">
+                        <div class="search">
+                            <form th:action="@{/getSearchList}" id="search">
+                            <input type="text" placeholder="汽车香水" name="searchName">
+                            <span>
+                                <imput class=" icon iconfont icon-sousuokuang" th:onclick="search()"></imput>
+                            </span>
+                            </form>
+                        </div>
+                        <div class="car">
+                            <i class="icon iconfont icon-gouwuchekong"></i>
+                            <a href="#" style="color:red; margin-left:8px">我的购物车</a>
+                            <span class="num">0</span>
+                        </div>
+                        <div class="hotwords">
+                            <ul>
+                                <li><a style="color:red">家电清凉节</a></li>
+                                <li><a>冰洗焕新</a></li>
+                                <li><a>京东京造</a></li>
+                                <li><a>满300-30</a></li>
+                                <li><a>相机投影</a></li>
+                                <li><a>办公采购</a></li>
+                                <li><a>荣耀70</a></li>
+                                <li><a>女鞋</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 主导航 -->
+                    <div class="bottom">
+                        <ul>
+                            <li><a href="#" style="color:red">秒杀</a></li>
+                            <li><a href="#" style="color:red">优惠券</a></li>
+                            <li><a href="#">PLUS会员</a></li>
+                            <li><a href="#">品牌闪购</a></li>
+                            <li><a href="#">拍卖</a></li>
+                            <li><a href="#">京东家电</a></li>
+                            <li><a href="#">京东超市</a></li>
+                            <li><a href="#">京东生鲜</a></li>
+                            <li><a href="#">京东国际</a></li>
+                            <li><a href="#">京东云</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- <div class="right">
+
+                </div> -->
+            </div>
+        </div>
+        <!-- banner -->
+        <div class="banner">
+            <div class="inner">
+                <div class="one">
+                    <ul>
+                        <li><a href="#">家用电器</a></li>
+                        <li><a th:href="@{/getGoodsList/}+1"><span style="color: red">手机</span>/运营商/数码</a></li>
+                        <li><a th:href="@{/getGoodsList/}+2"><span style="color: red;">电脑</span>/办公</a></li>
+                        <li><a href="#">家居/家具/家装/厨具</a></li>
+                        <li><a href="#">男装/女装/童装/内衣</a></li>
+                        <li><a href="#">美妆/个护清洁/宠物</a></li>
+                        <li><a href="#">女鞋/箱盒/钟表/珠宝</a></li>
+                        <li><a href="#">男鞋/运动/户外</a></li>
+                        <li><a href="#">房产/汽车/汽车用品</a></li>
+                        <li><a href="#">母婴/玩具乐器</a></li>
+                        <li><a href="#">食品/酒类/生鲜/特产</a></li>
+                        <li><a href="#">艺术/礼品鲜花/农资绿植</a></li>
+                        <li><a href="#">医药保健/计生情趣</a></li>
+                        <li><a href="#">图书/文娱/教育/电子书</a></li>
+                        <li><a href="#">机票/酒店/旅游/生活</a></li>
+                        <li><a href="#">理财/众筹/白条/保险</a></li>
+                        <li><a href="#">安装/维修/清洗/二手</a></li>
+                        <li><a href="#">工业品</a></li>
+
+                    </ul>
+
+                </div>
+                <div class="two">
+                        <div class="box-image" style="opacity:1"><img th:src="@{/img/index/lunbo01.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo02.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo03.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo04.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo05.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo06.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo07.jpg}" alt=""></div>
+                        <div class="box-image"><img th:src="@{/img/index/lunbo08.jpg}" alt=""></div>
+                        <span id="left-button" class="bannerButton bannerButtonLeft">&lt;</span>
+                        <span id="right-button" class="bannerButton bannerButtonRight">&gt;</span>
+                        <ul id="bannerNav">
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                            <li class="botton01"></li>
+                        </ul>
+                </div>
+                <!-- banner 右侧 -->
+                <div class="three">
+                        <div class="top">
+                            <img th:src="@{/img/index/Jdoge.png}" alt="">
+                            <p>Hi，欢迎逛京东！
+                               登录|注册
+                            </p>
+                            <div class="clear"></div>
+                            <a href="#" class='button new'>新人福利</a>
+                            <a href="#" class="button plus">PLUS会员</a>
+                        </div>
+                        <div class="center">
+                            <div class="title">
+                                <h4>京东快报</h4>
+                                <span>更多 &gt;</span>
+                            </div>
+                            <div class="content">
+                                <ul>
+                                    <li><span>最新</span>vivo双旗舰将搭载骁龙8 Gen1 SPU定制芯片</li>
+                                    <li><span>热门</span>TCL雷鸟雀4SE电视,让你享受沉浸式视听</li>
+                                    <li><span>最新</span>毕亚兹DP转接头,能看4K更支持144Hz</li>
+                                    <li><span>热评</span>用新秀丽双肩背包，做“型”走城市的潮男</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <ul>
+                                <li>
+                                    <img th:src="@{/img/index/calls.png}" alt="">
+                                    <p>话费</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/ticket.png}" alt="">
+                                    <p>机票</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/hotel.png}" alt="">
+                                    <p>酒店</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/game.png}" alt="">
+                                    <p>游戏</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/oil.png}" alt="">
+                                    <p>加油卡</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/train.png}" alt="">
+                                    <p>火车票</p>
+                                </li>
+                               
+                                <li>
+                                    <img th:src="@{/img/index/crowdfunding.png}" alt="">
+                                    <p>众筹</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/finace.png}" alt="">
+                                    <p>理财</p>
+                                </li>
+                              
+                                <li>
+                                    <img th:src="@{/img/index/calls.png}" alt="">
+                                    <p>白条</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/whitepiece.png}" alt="">
+                                    <p>电影票</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/company.png}" alt="">
+                                    <p>企业购</p>
+                                </li>
+                                <li>
+                                    <img th:src="@{/img/index/gift.png}" alt="">
+                                    <p>礼品卡</p>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                        
+                </div>
+            </div>
+          
+        </div>
+    </div>
+
+    <!-- mian -->
+    <div class="main">
+        <div class="inner">
+            <!-- 京东秒杀 -->
+            <div class="one">
+                <!-- 秒杀log -->
+                <div class="left">
+                    <h4>京东秒杀</h4>
+                    <p class="end">10:00场 距结束</p>
+                    <p class="time">
+                        <span  class="num">00</span>
+                        <span>:</span>
+                        <span  class="num">35</span>
+                        <span>:</span>
+                        <span  class="num">00</span>
+                    </div>
+                    </p>
+                    
+                <!-- 轮播图 -->
+                <div class="center">
+                    <ul>
+                        
+                        <li>
+                            <img th:src="@{/img/index/miaoshalunbo01.webp}" alt="">
+                        <p>四季沐歌（MICOE）航+飞驰 太阳能热水器 家用全自动 光电双能 一级能效 wifi智能仪表电加热 20管155L</p>
+                        <span>￥1999.0</span>
+                        </li>
+                        <li>
+                            <img th:src="@{/img/index/miaoshalunbo02.webp}" alt="">
+                        <p>华凌空调 新一级能效 变频冷暖 大风口 1匹 客厅卧室挂式空调挂机 以旧换新 智能遥控 KFR-26GW/N8HL1</p>
+                        <span>￥1999.0</span>
+                        </li>
+                        <li>
+                            <img th:src="@{/img/index/miaoshalunbo03.webp}" alt="">
+                            <p>佳能（Canon）EOS RP 全画幅微单数码相机 24-105标准镜头套装 （约2620万像素/轻巧便携）</p>
+                            <span>￥9799.0</span>
+                        </li>
+                    </ul>
+                    <span class="bannerButton bannerButtonLeft">&lt;</span>
+                    <span class="bannerButton bannerButtonRight">&gt;</span>
+
+                </div>
+                <!-- 专场 -->
+                <div class="right">
+                    <ul>
+                        
+                        <li>
+                            <img th:src="@{/img/index/pinleimiaosha.webp}" alt="">
+                        <p class="p1">整机秒杀单场</p>
+                        <p class="p2">白条24期免息</p>
+                        <div class="miaosha">品类秒杀</div>
+                        </li>
+                    
+                    </ul>
+                   
+
+                </div>
+                    
+                </div>
+            </div>
+
+        </div>
+        
+        
+
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+
+    </div>
+    <script>
+        function search() {
+            $("#search").submit();
+        }
+    </script>
+</body>
+</html>

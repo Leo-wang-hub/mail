@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--也可以添加缓存-->
+<mapper namespace="com.woomq.mapper.CarMapper">
+   <!--<select id="getCar" resultType="Car">-->
+       <!--SELECT* from mail.car RIGHT JOIN mail.product ON car.product_id = product.product_id WHERE car.product_id=#{userId}-->
+   <!--</select>-->
+    <select id="getCar" resultType="Cart">
+        SELECT* from mail.car,mail.product WHERE car.product_id=product.product_id
+    </select>
+    <insert id="addCar" parameterType="Car">
+        INSERT INTO mail.car (user_id, product_id, product_num, product_count) VALUES (#{userId},#{productId},#{productNum},#{productCount})
+    </insert>
+    <update id="updateCar" parameterType="Cart">
+        UPDATE mail.car SET product_num=#{productNum},product_count=#{productCount} WHERE car_id=#{carId}
+    </update>
+    <delete id="deleteCar" parameterType="int">
+        DELETE  from mail.car WHERE car_id=#{carId}
+    </delete>
+    <delete id="deleteCarAll" parameterType="int">
+        DELETE  from mail.car where user_id=#{userId}
+    </delete>
+    <select id="getCarbyProuctId" resultType="Cart" parameterType="Map">
+       SELECT * FROM mail.car where user_id=#{userId} and product_id=#{productId}
+    </select>
+    <select id="getAllProduct" resultType="Cart">
+        select * from mail.car
+    </select>
+</mapper>
+

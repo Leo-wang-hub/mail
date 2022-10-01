@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--也可以添加缓存-->
+<mapper namespace="com.woomq.mapper.GoodsMapper">
+    <select id="getGoodsListByTypeId" resultType="Product"  parameterType="int">
+        SELECT * FROM mail.product WHERE type_id=#{typeId}
+    </select>
+    <select id="getSearchList" parameterType="String" resultType="Product">
+        SELECT *FROM mail.product where product_name like '%${searchName}%'
+    </select>
+    <select id="getGoodsListById" resultType="Product" parameterType="int">
+        SELECT * FROM mail.product WHERE product_id=#{productId}
+    </select>
+</mapper>
+

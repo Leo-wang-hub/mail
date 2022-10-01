@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--也可以添加缓存-->
+<mapper namespace="com.woomq.mapper.UserMapper">
+    <select id="getUserByUserName" parameterType="String" resultType="User" >
+        SELECT * FROM mail.user where user.username=#{username}
+    </select>
+    <insert id="addUser" parameterType="User">
+       INSERT INTO mail.user (username, password) VALUES (#{username},#{password})
+    </insert>
+
+</mapper>
+

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" th:href="@{/css/reset.css}">
+    <!--ali图库-->
+    <link rel="stylesheet" th:href="@{/font/iconfont.css}">
+    <!--载入bootstrap中的css文件-->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+    <style>
+        body{
+            background-color: #999;
+
+            }
+        .container{
+            background-color: white;
+
+        }
+        .row div{
+            text-align: center;
+
+        }
+        .row div a{
+            text-decoration: none;
+        }
+        .price{
+            color:red;
+        }
+        .car a{
+            color:red;
+        }
+        .car{
+
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--使用面板构建商品列表-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list"></span>商品详情
+        </div>
+        <div class="panel-body">
+            <!--缩略图-->
+
+                <div class="row">
+                    <div  class="col-sm-6 col-md-6">
+                        <a href="#" class="thumbnail" >
+                            <img th:src="@{${product.getProductImage()}}"
+                                 alt="通用的占位符缩略图" style="height: 350px;">
+
+                        </a>
+
+                    </div>
+                    <div  class="col-sm-6 col-md-6">
+
+                            <div class="panel panel-default" >
+                                <div class="panel-heading">
+                                    商品详情
+                                </div>
+                                <div class="panel-body" style="height: 315px">
+                                    <div>
+
+                                        商品名称：<h5 th:text="${product.getProductName()}"></h5>
+                                        商品价格：<div><span class="price">￥</span><span class="price" th:text="${product.getProductPrice()}">￥8999</span></div>
+                                        商品描述：<h6 th:text="${product.getProductDetail()}"></h6>
+                                        <div/>
+                                        <div class="car">
+                                            <a type="button" class="btn btn-warning" th:href="@{/toCar(userId=${session.user.getId()},productId=${product.getProductId})}"><i class="icon iconfont icon-gouwuchekong"></i>加入购物车</a>
+                                            <button type="button" class="btn btn-danger">&nbsp;直接购买</button>
+                                        </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+
+                </div>
+        </div>
+
+
+    </div>
+    </div>
+</div>
+
+
+
+
+<!--引入jquery-->
+<script type="text/javascript" src="/static/js/jquery-3.5.1.js"></script>
+<!--引入bootstrap中的js-->
+<script  type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js" ></script>
+</body>
+</html>

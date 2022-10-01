@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>注册</title>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+		<!-- Custom styles for this template -->
+		<link rel="stylesheet" th:href="@{/css/login.css}">
+	</head>
+
+	<body class="text-center">
+		<form class="form-signin" th:action="@{/user/register}">
+			<img class="mb-4" th:src="@{/img/index/logo.png}" alt="" width="200" height="150">
+			<!--如何message的消息不为空则执行这个消息-->
+            <p style="color: red;" th:text="${msg}" id="msg"></p>
+			<label class="sr-only">账号</label>
+			<input id="username" type="text" class="form-control"name="username" placeholder="账号" required="" onblur="getUser()">
+			<label class="sr-only">密码</label>
+			<input id="password" type="password" class="form-control" name="password" placeholder="密码" required="">
+			<label class="sr-only">确认密码</label>
+			<input id="confirmPassword" type="password" class="form-control" name="confirmPassword" placeholder="确认密码" required="" onblur="confirmPwd()">
+			<!--<div class="checkbox mb-3">-->
+				<!--<label>-->
+          <!--&lt;!&ndash;<input type="checkbox" value="remember-me"> Remember me&ndash;&gt;-->
+        <!--</label>-->
+			<!--</div>-->
+			<button class="btn btn-lg btn-primary btn-block" type="submit" id="registerButton" onclick="registerSuccess()">注册</button>
+			<p class="mt-5 mb-3 text-muted">© 2022</p>
+
+		</form>
+		<!--引入jquery-->
+		<script type="text/javascript" th:src="@{/js/jquery-3.5.1.js}"></script>
+		<!--引入bootstrap中的js-->
+		<script  type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}" ></script>
+		<script>
+			//查询注册用户是否已经存在
+			    function getUser() {
+				$.ajax({
+					url:"/user/getUserByUsername",
+					data:{"username":$("#username").val()},
+					success:function (data) {
+					    //用户已存在
+						if(data==1){
+							$("#msg").html("用户名已经存在").css("color","red");
+							//禁用注册提交按钮
+							$("#registerButton").attr("disabled","true");
+						}
+						else{
+                            //用户不存在
+							$("#msg").html("用户名可用").css("color","green");
+							$("#registerButton").removeAttr("disabled","true");
+						}
+
+
+                    }
+				})
+            }
+            //密码确认
+			function confirmPwd() {
+
+				if($("#password").val()!=$("#confirmPassword").val()){
+				    //两次输入密码一致
+				    $("#msg").html("两次输入用户名不一致").css("color","red");
+				    $("#registerButton").attr("disabled","true");
+
+				}
+				else{
+
+                    $("#msg").html("密码一致").css("color","green");
+				    $("#registerButton").removeAttr("disable","true");
+				}
+
+            }
+            //成功注册
+			function registerSuccess() {
+				alert("账号注册成功请返回登录");
+            }
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--也可以添加缓存-->
+<mapper namespace="com.woomq.mapper.OrderMapper">
+    <insert id="addOrder" parameterType="Order">
+        INSERT INTO mail.`order`(order_id, user_id, address_id, order_date, order_total) VALUES (#{orderId},#{userId},#{addressId},#{orderDate},#{orderTotal})
+    </insert>
+    <insert id="addItem" parameterType="Item">
+        INSERT INTO mail.item(product_id, product_num, product_count,order_id) VALUES (#{productId},#{productNum},#{productCount},#{orderId})
+    </insert>
+    <select id="getOrderById" parameterType="String" resultType="Order">
+        SELECT *FROM mail.`order` where order_id=#{orderId}
+    </select>
+        <select id="getItemByOrderId" resultType="Item" parameterType="String">
+            SELECT * FROM mail.item where order_id=#{orderId}
+        </select>
+</mapper>
+
